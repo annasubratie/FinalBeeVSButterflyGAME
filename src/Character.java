@@ -11,6 +11,7 @@ public class Character {
     public boolean isAlive;
     public Rectangle rec;
     public Image pic;
+    public boolean isIntersecting=false;
 
     //have a constructor
     public Character(int pXpos, int pYpos, int pDx, int pDy){
@@ -18,10 +19,10 @@ xpos=pXpos;
 ypos=pYpos;
 dx=pDx;
 dy=pDy;
-width = 200;
-height=100;
+width = 100;
+height=50;
 isAlive=true;
-rec=new Rectangle(xpos,ypos,width,height);
+rec=new Rectangle(xpos,ypos,width-10,height-10);
     }// p is parameter
 
     //printInfo
@@ -50,9 +51,11 @@ rec=new Rectangle(xpos,ypos,width,height);
         }
         xpos = xpos+dx;
         ypos= ypos +dy;
-        rec=new Rectangle (xpos,ypos,width,height);
+        rec=new Rectangle(xpos,ypos,width-10,height-10);
 
     }
+
+
 
     public void wrapMove(){
         //if character goes off of the screen it comes back on other side of screen
@@ -70,11 +73,33 @@ rec=new Rectangle(xpos,ypos,width,height);
         }
         xpos = xpos+dx;
         ypos= ypos+dy;
-        rec=new Rectangle (xpos,ypos,width,height);
+        rec=new Rectangle(xpos,ypos,width-10,height-10);
 
        // if (astro.xpos=star.xpos){
 
        // }
+    }
+    public void controlMove(){
+        //need to use conditional statements and booleans to create this move method. 
+        if (xpos > (1000-width)){
+            xpos= xpos-2;
+        }
+        if (xpos<0) {
+            xpos=xpos+2;
+        }
+        if(ypos > (700-height)){
+          ypos = ypos -2;
+        }
+        if(ypos<0){
+            ypos=ypos+2;
+        }
+
+            xpos = xpos + dx;
+            ypos = ypos + dy;
+        rec=new Rectangle(xpos,ypos,width-10,height-10);
+
+
+
     }
 }
 //this class is for creating objects and the GameLand uses them which has all the game mechanics
